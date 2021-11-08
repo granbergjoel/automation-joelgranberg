@@ -3,7 +3,6 @@
 //Elements
 const titleOfCreateBillsPage = 'Testers Hotel'
 const valueTextfield = 'input'
-const value = '2000'
 const paidCheckbox = '.checkbox'
 const saveButton ='.blue'
 
@@ -12,7 +11,7 @@ function checkTitleCreateBillsPage(){
     cy.title().should('eq', titleOfCreateBillsPage)
 }
 
-function enterValue(){
+function enterValue(cy, value){
     cy.get(valueTextfield).type(value)
 }
 

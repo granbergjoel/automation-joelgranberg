@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-
+import faker from 'faker'
 import * as indexFuncs from '../pages/indexPage'
 import * as dashboardFuncs from '../pages/dashboardPage'
 import * as targets from '../targets/targets'
@@ -33,25 +33,26 @@ describe('Test suite - regression tests', function(){
        indexFuncs.performValidLogin(cy, targets.username, targets.password, 'Tester Hotel Overview')
     })
     
- //My tests beloq
- it('T03 - create new room', function(){
-    indexFuncs.performValidLogin(cy, targets.username, targets.password, 'Tester Hotel Overview')
-    dashboardFuncs.navigateToViewRooms(cy, 'Rooms')
-    roomsFuncs.checkRoomIsNotPresent(cy)
-    roomsFuncs.navigateToCreateRoom(cy, 'New Room')//move to targets, faker?
-    createRoomFuncs.selectCategoryDouble(cy, 'Double')//move to targets, faker?
-    createRoomFuncs.selectRoomNumber(cy, '103')//move to targets, faker?
-    createRoomFuncs.selectFloor(cy, '1')
-    createRoomFuncs.checkBox(cy)
-    createRoomFuncs.selectPrice(cy)
-    createRoomFuncs.selectFeature(cy)
-    createRoomFuncs.clickSave(cy, 'Rooms')
+ //My tests below
+ 
+    it('T03 - create new room', function(){
+        indexFuncs.performValidLogin(cy, targets.username, targets.password, 'Tester Hotel Overview')
+        dashboardFuncs.navigateToViewRooms(cy, 'Rooms')
+        roomsFuncs.checkRoomIsNotPresent(cy)
+        roomsFuncs.navigateToCreateRoom(cy, 'New Room')
+        createRoomFuncs.selectCategoryDouble(cy, 'Double')//move to targets? faker? make array with options?
+        createRoomFuncs.selectRoomNumber(cy, targets.roomNumber)
+        createRoomFuncs.selectFloor(cy, targets.floor)
+        createRoomFuncs.checkBox(cy)
+        createRoomFuncs.selectPrice(cy, targets.price)
+        createRoomFuncs.selectFeature(cy, 'penthouse') //move to targets? faker? make array with options?
+        createRoomFuncs.clickSave(cy, 'Rooms')
 
-    //Assert new data is correct
-    roomsFuncs.assertNewRoomData(cy, 'Floor 1, Room 103') //move to targets, faker?
-    roomsFuncs.checkRoomIsCreated(cy)
-    roomsFuncs.deleteRoom(cy)
-    roomsFuncs.checkRoomIsNotPresent(cy)
+        //Assert new data is correct
+        roomsFuncs.assertNewRoomData(cy, targets.roomNumber, targets.floor,targets.price) 
+        roomsFuncs.checkRoomIsCreated(cy)
+        roomsFuncs.deleteRoom(cy)
+        roomsFuncs.checkRoomIsNotPresent(cy)
 })
 
     it('T04 - create client', function(){
@@ -61,18 +62,18 @@ describe('Test suite - regression tests', function(){
         clientsFuncs.checkClientIsNotPresent(cy)
         clientsFuncs.clickCreateClient(cy, 'New Client')
         createClientFuncs.checkTitleOfCreateClientPage(cy)
-        createClientFuncs.giveClientName(cy, 'John Doe')//move to targets?
-        createClientFuncs.giveClientEmail(cy, 'john.doe@email.com')//move to targets?
-        createClientFuncs.giveClientTelephone(cy, '070-1234567')//move to targets?
+        createClientFuncs.giveClientName(cy, targets.fullName)
+        createClientFuncs.giveClientEmail(cy, targets.email)
+        createClientFuncs.giveClientTelephone(cy, targets.telephone)
         createClientFuncs.clickSaveClient(cy, 'Clients')
-    
+
         //Assert new data is correct
-        clientsFuncs.assertNewClientData(cy, 'John Doe (#3)', 'john.doe@email.com', '070-1234567') //move to targets?
+        clientsFuncs.assertNewClientData(cy, targets.fullName, targets.email, targets.telephone) 
         clientsFuncs.checkClientIsCreated(cy)
         clientsFuncs.openMenuCreatedClient(cy)
         clientsFuncs.deleteCreatedClient(cy)
         clientsFuncs.checkClientIsNotPresent(cy)
-    })
+})
 
     it('T05 - create bill', function(){
         indexFuncs.performValidLogin(cy, targets.username, targets.password, 'Tester Hotel Overview')
@@ -81,10 +82,13 @@ describe('Test suite - regression tests', function(){
         billsFuncs.checkBillIsNotPresent(cy)
         billsFuncs.navigateToCreateBill(cy, 'New Bill')
         createBillsFuncs.checkTitleCreateBillsPage(cy)
-        createBillsFuncs.enterValue(cy)
+        createBillsFuncs.enterValue(cy, targets.value)
         //createBillsFuncs.checkBox(cy)
         createBillsFuncs.saveNewBill(cy, 'Bills')
+
+        //assert new data
         billsFuncs.checkBillIsCreated(cy)
+        billsFuncs.assertNewData(cy, targets.value)
         billsFuncs.openMenuCreatedBill(cy)
         billsFuncs.deleteCreatedBill(cy)
         billsFuncs.checkBillIsNotPresent(cy)
@@ -92,14 +96,16 @@ describe('Test suite - regression tests', function(){
     })
 
     it('T06 - create reservation', function(){
+//I had problem making the dates random as the format in faker was incorrect. Could not find the correct syntax
+
         indexFuncs.performValidLogin(cy, targets.username, targets.password, 'Tester Hotel Overview')
-        dashboardFuncs.navigateToViewReservation(cy, 'Reservations') //Content to confirm
+        dashboardFuncs.navigateToViewReservation(cy, 'Reservations') 
         reservationsFuncs.checkTitleReservationsPage(cy)
         reservationsFuncs.checkReservationIsNotPresent(cy)
         reservationsFuncs.clickCreateReservation(cy, 'New Reservation')
         newReservationFuncs.checkTitleNewReservationsPage(cy)
-        newReservationFuncs.enterStart(cy, '2021-12-12') //move to targets?
-        newReservationFuncs.enterEnd(cy, '2021-12-13') //move to targets?
+        newReservationFuncs.enterStart(cy, '2021-12-12')  
+        newReservationFuncs.enterEnd(cy, '2021-12-13') 
         newReservationFuncs.selectClient(cy)
         newReservationFuncs.selectRoom(cy)
         newReservationFuncs.selectBill(cy)

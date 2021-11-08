@@ -12,6 +12,7 @@ import * as createBillsFuncs from '../pages/createBillsPage'
 import * as reservationsFuncs from '../pages/reservationsPage'
 import * as newReservationFuncs from '../pages/newReservationPage'
 import * as editReservationPage from '../pages/editReservationPage'
+import faker from 'faker'
 
 beforeEach(()=>{
     cy.visit(targets.base_url)
@@ -21,7 +22,6 @@ beforeEach(()=>{
 afterEach(()=>{
     dashboardFuncs.performLogout(cy, 'Login')
 }) 
-
 
 
 

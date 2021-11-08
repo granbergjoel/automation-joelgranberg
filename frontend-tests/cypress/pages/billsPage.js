@@ -35,6 +35,11 @@ function deleteCreatedBill(){
     cy.get(deleteCreatedBillButton).click()
 }
 
+function assertNewData(cy,value){
+    cy.get('.bills > :nth-child(2)').contains('ID: 2')
+    cy.get('.bills > :nth-child(2)').contains(value)
+}
+
 
 //Exports
 module.exports = {
@@ -44,4 +49,5 @@ module.exports = {
     checkBillIsCreated,
     openMenuCreatedBill,
     deleteCreatedBill,
+    assertNewData,
 }
