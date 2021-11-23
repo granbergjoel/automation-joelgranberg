@@ -1,0 +1,195 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 6,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-11-08T09:14:36.654Z",
+    "end": "2021-11-08T09:14:57.183Z",
+    "duration": 20529,
+    "testsRegistered": 6,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e26119d0-0b09-4220-b79d-c2df2f7442e7",
+      "title": "",
+      "fullFile": "cypress/integration/regression-page-objects.spec.js",
+      "file": "cypress/integration/regression-page-objects.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3ac3da16-138c-49cb-8987-e71819d62982",
+          "title": "Test suite - regression tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Perform Login and Logout",
+              "fullTitle": "Test suite - regression tests Perform Login and Logout",
+              "timedOut": null,
+              "duration": 1632,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "indexFuncs.performValidLogin(cy, targets.username, targets.password, 'Tester Hotel Overview');",
+              "err": {},
+              "uuid": "e6236a2d-2ba8-4d54-bbef-4ed61ce58698",
+              "parentUUID": "3ac3da16-138c-49cb-8987-e71819d62982",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "T03 - create new room",
+              "fullTitle": "Test suite - regression tests T03 - create new room",
+              "timedOut": null,
+              "duration": 2941,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "indexFuncs.performValidLogin(cy, targets.username, targets.password, 'Tester Hotel Overview');\ndashboardFuncs.navigateToViewRooms(cy, 'Rooms');\nroomsFuncs.checkRoomIsNotPresent(cy);\nroomsFuncs.navigateToCreateRoom(cy, 'New Room');\ncreateRoomFuncs.selectCategoryDouble(cy, 'Double'); //move to targets? faker? make array with options?\ncreateRoomFuncs.selectRoomNumber(cy, targets.roomNumber);\ncreateRoomFuncs.selectFloor(cy, targets.floor);\ncreateRoomFuncs.checkBox(cy);\ncreateRoomFuncs.selectPrice(cy, targets.price);\ncreateRoomFuncs.selectFeature(cy, 'penthouse'); //move to targets? faker? make array with options?\ncreateRoomFuncs.clickSave(cy, 'Rooms'); //Assert new data is correct\nroomsFuncs.assertNewRoomData(cy, targets.roomNumber, targets.floor, targets.price);\nroomsFuncs.checkRoomIsCreated(cy);\nroomsFuncs.deleteRoom(cy);\nroomsFuncs.checkRoomIsNotPresent(cy);",
+              "err": {},
+              "uuid": "c43e12fb-a31a-4aca-97ad-fbd09db43a3f",
+              "parentUUID": "3ac3da16-138c-49cb-8987-e71819d62982",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "T04 - create client",
+              "fullTitle": "Test suite - regression tests T04 - create client",
+              "timedOut": null,
+              "duration": 2940,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "indexFuncs.performValidLogin(cy, targets.username, targets.password, 'Tester Hotel Overview');\ndashboardFuncs.navigateToViewClients(cy, 'Clients');\nclientsFuncs.checkTitleOfClientsPage(cy);\nclientsFuncs.checkClientIsNotPresent(cy);\nclientsFuncs.clickCreateClient(cy, 'New Client');\ncreateClientFuncs.checkTitleOfCreateClientPage(cy);\ncreateClientFuncs.giveClientName(cy, targets.fullName);\ncreateClientFuncs.giveClientEmail(cy, targets.email);\ncreateClientFuncs.giveClientTelephone(cy, targets.telephone);\ncreateClientFuncs.clickSaveClient(cy, 'Clients'); //Assert new data is correct\nclientsFuncs.assertNewClientData(cy, targets.fullName, targets.email, targets.telephone);\nclientsFuncs.checkClientIsCreated(cy);\nclientsFuncs.openMenuCreatedClient(cy);\nclientsFuncs.deleteCreatedClient(cy);\nclientsFuncs.checkClientIsNotPresent(cy);",
+              "err": {},
+              "uuid": "c3546387-44a4-4846-a1ef-1623415eb6df",
+              "parentUUID": "3ac3da16-138c-49cb-8987-e71819d62982",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "T05 - create bill",
+              "fullTitle": "Test suite - regression tests T05 - create bill",
+              "timedOut": null,
+              "duration": 2172,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "indexFuncs.performValidLogin(cy, targets.username, targets.password, 'Tester Hotel Overview');\ndashboardFuncs.navigateToViewBills(cy, 'Bills');\nbillsFuncs.checkTitleBillsPage(cy);\nbillsFuncs.checkBillIsNotPresent(cy);\nbillsFuncs.navigateToCreateBill(cy, 'New Bill');\ncreateBillsFuncs.checkTitleCreateBillsPage(cy);\ncreateBillsFuncs.enterValue(cy, targets.value); //createBillsFuncs.checkBox(cy)\ncreateBillsFuncs.saveNewBill(cy, 'Bills'); //assert new data\nbillsFuncs.checkBillIsCreated(cy);\nbillsFuncs.assertNewData(cy, targets.value);\nbillsFuncs.openMenuCreatedBill(cy);\nbillsFuncs.deleteCreatedBill(cy);\nbillsFuncs.checkBillIsNotPresent(cy);",
+              "err": {},
+              "uuid": "921c0224-60df-49d8-9e4e-e9069cdd7698",
+              "parentUUID": "3ac3da16-138c-49cb-8987-e71819d62982",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "T06 - create reservation",
+              "fullTitle": "Test suite - regression tests T06 - create reservation",
+              "timedOut": null,
+              "duration": 2805,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//I had problem making the dates random as the format in faker was incorrect. Could not find the correct syntax\nindexFuncs.performValidLogin(cy, targets.username, targets.password, 'Tester Hotel Overview');\ndashboardFuncs.navigateToViewReservation(cy, 'Reservations');\nreservationsFuncs.checkTitleReservationsPage(cy);\nreservationsFuncs.checkReservationIsNotPresent(cy);\nreservationsFuncs.clickCreateReservation(cy, 'New Reservation');\nnewReservationFuncs.checkTitleNewReservationsPage(cy);\nnewReservationFuncs.enterStart(cy, '2021-12-12');\nnewReservationFuncs.enterEnd(cy, '2021-12-13');\nnewReservationFuncs.selectClient(cy);\nnewReservationFuncs.selectRoom(cy);\nnewReservationFuncs.selectBill(cy);\nnewReservationFuncs.saveNewReservation(cy, 'Reservations');\nreservationsFuncs.checkTitleReservationsPage(cy); //Assert data is correct and reservation is made\nreservationsFuncs.assertNewData(cy, '2021-12-12', '2021-12-13');\nreservationsFuncs.checkReservationIsCreated(cy);\nreservationsFuncs.openMenuCreatedReservation(cy);\nreservationsFuncs.deleteCreatedReservation(cy);\nreservationsFuncs.checkReservationIsNotPresent(cy);",
+              "err": {},
+              "uuid": "a3f00423-ae1b-48e5-b1df-1319f5783069",
+              "parentUUID": "3ac3da16-138c-49cb-8987-e71819d62982",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "T07 - change reservation",
+              "fullTitle": "Test suite - regression tests T07 - change reservation",
+              "timedOut": null,
+              "duration": 4460,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "indexFuncs.performValidLogin(cy, targets.username, targets.password, 'Tester Hotel Overview');\ndashboardFuncs.navigateToViewReservation(cy, 'Reservations');\nreservationsFuncs.checkTitleReservationsPage(cy); //Assert original data is correct\nreservationsFuncs.assertNewData(cy, '2020-04-01', '2020-04-04'); //Move to targets?\nreservationsFuncs.openMenuExistingReservation(cy);\nreservationsFuncs.clickEditExistingReservation(cy);\neditReservationPage.checkTitleEditPage(cy);\neditReservationPage.clearStartTextfield(cy);\neditReservationPage.enterNewStart(cy, '2021-12-12'); //Move to targets?\neditReservationPage.clearEndTextfield(cy);\neditReservationPage.enterNewEnd(cy, '2021-12-13'); //Move to targets?\neditReservationPage.saveReservation(cy);\nreservationsFuncs.checkTitleReservationsPage(cy); //Assert new data is correct\nreservationsFuncs.assertNewData(cy, '2021-12-12', '2021-12-13'); //move to targets?\nreservationsFuncs.openMenuExistingReservation(cy);\nreservationsFuncs.clickEditExistingReservation(cy);\neditReservationPage.checkTitleEditPage(cy);\neditReservationPage.clearStartTextfield(cy);\neditReservationPage.enterOldStart(cy, '2020-04-01'); //Move to targets?\neditReservationPage.clearEndTextfield(cy);\neditReservationPage.enterOldEnd(cy, '2020-04-04'); //Move to targets?\neditReservationPage.saveReservation(cy);\nreservationsFuncs.assertNewData(cy, '2020-04-01', '2020-04-04'); //Move to targets?\nreservationsFuncs.checkTitleReservationsPage(cy);",
+              "err": {},
+              "uuid": "12d785d6-f786-4fa4-98fb-bb42ec3e5de1",
+              "parentUUID": "3ac3da16-138c-49cb-8987-e71819d62982",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e6236a2d-2ba8-4d54-bbef-4ed61ce58698",
+            "c43e12fb-a31a-4aca-97ad-fbd09db43a3f",
+            "c3546387-44a4-4846-a1ef-1623415eb6df",
+            "921c0224-60df-49d8-9e4e-e9069cdd7698",
+            "a3f00423-ae1b-48e5-b1df-1319f5783069",
+            "12d785d6-f786-4fa4-98fb-bb42ec3e5de1"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 16950,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.0.0"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.0.0"
+    }
+  }
+}
