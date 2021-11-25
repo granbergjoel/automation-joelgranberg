@@ -1,24 +1,24 @@
 /// <reference types="cypress" />
 
 import faker from 'faker'
-import * as indexFuncs from '../pages/indexPage'
-import * as dashboardFuncs from '../pages/dashboardPage'
-import * as targets from '../targets/targets'
-import * as createRoomFuncs from '../pages/createRoom'
-import * as roomsFuncs from '../pages/roomsPage'
-import * as clientsFuncs from '../pages/clientsPage'
-import * as createClientFuncs from '../pages/createClientPage'
-import * as billsFuncs from '../pages/billsPage'
-import * as createBillsFuncs from '../pages/createBillsPage'
-import * as reservationsFuncs from '../pages/reservationsPage'
-import * as newReservationFuncs from '../pages/newReservationPage'
-import * as editReservationPage from '../pages/editReservationPage'
+import * as indexFuncs from '../backend-tests/cypress/pages/indexPage'
+import * as dashboardFuncs from '../backend-tests/cypress/pages/dashboardPage'
+import * as targets from '../backend-tests/cypress/targets/targets'
+import * as createRoomFuncs from '../backend-tests/cypress/pages/createRoom'
+import * as roomsFuncs from '../backend-tests/cypress/pages/roomsPage'
+import * as clientsFuncs from '../backend-tests/cypress/pages/clientsPage'
+import * as createClientFuncs from '../backend-tests/cypress/pages/createClientPage'
+import * as billsFuncs from '../backend-tests/cypress/pages/billsPage'
+import * as createBillsFuncs from '../backend-tests/cypress/pages/createBillsPage'
+import * as reservationsFuncs from '../backend-tests/cypress/pages/reservationsPage'
+import * as newReservationFuncs from '../backend-tests/cypress/pages/newReservationPage'
+import * as editReservationPage from '../backend-tests/cypress/pages/editReservationPage'
 
 
 // Test suite
 describe('Test suite - regression tests', function(){
 
-
+/*
     beforeEach(()=>{
         cy.visit(targets.base_url)
         indexFuncs.checkTitleOfIndexPage(cy, 'Testers Hotel')
@@ -27,7 +27,7 @@ describe('Test suite - regression tests', function(){
     afterEach(()=>{
         dashboardFuncs.performLogout(cy, 'Login')
     })    
-
+*/
     //This is your original test case, I kept it as a reference
     it('Perform Login and Logout', function(){
        indexFuncs.performValidLogin(cy, targets.username, targets.password, 'Tester Hotel Overview')
@@ -118,6 +118,7 @@ describe('Test suite - regression tests', function(){
         reservationsFuncs.openMenuCreatedReservation(cy)
         reservationsFuncs.deleteCreatedReservation(cy)
         reservationsFuncs.checkReservationIsNotPresent(cy)
+
     })
 
     it('T07 - change reservation', function(){
